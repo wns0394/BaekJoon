@@ -7,6 +7,7 @@ dy = [0, 1, 0, -1]
 def bfs(x, y, z):
     q = deque()
     q.append((x, y, z))
+    visited[x][y] = 1
     group = []
     group.append((x, y))
     while q:
@@ -34,7 +35,7 @@ while True:
     for i in range(n):
         for j in range(n):
             if visited[i][j] == 0:
-                visited[i][j] = 1
+                # visited[i][j] = 1
                 g = bfs(i, j, arr[i][j])
                 if len(g) > 1:
                     flag = 1
