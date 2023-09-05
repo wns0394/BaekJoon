@@ -19,4 +19,4 @@ for i in range(1, n+1):
         # 끝나는 날짜의 최대 와 i-1일에서최대값 + i일만큼 일하는 금액
         d[i + arr[i][0] - 1] = max(d[i + arr[i][0] - 1], d[i-1] + arr[i][1])
 
-print(max(d))
+print(d[-1])
