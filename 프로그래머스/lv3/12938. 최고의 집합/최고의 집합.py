@@ -6,10 +6,8 @@ def solution(n, s):
     if s % n == 0:
         answer.append(s//n)
         answer = answer * n
-        return answer
-    if n > s:
+    elif n > s:
         answer.append(-1)
-        return answer
     else:
         a = s // n
         na = s % n
