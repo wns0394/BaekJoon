@@ -7,7 +7,7 @@ for _ in range(n):
 
     arr.append((t,s))
 
-arr.sort(key= lambda x: x[1])
+arr.sort(key= lambda x: (x[1],-x[0]))
 result = 1000001
 pre = 0
 for i in range(n):
