@@ -1,0 +1,26 @@
+SELECT A.AUTHOR_ID, A.AUTHOR_NAME, C.CATEGORY, SUM(C.TOTAL_PRICE) AS TOTAL_SALES
+FROM AUTHOR AS A
+JOIN (
+    SELECT B.BOOK_ID,B.CATEGORY, B.AUTHOR_ID, (B.PRICE * S.TOTAL) TOTAL_PRICE
+    FROM BOOK AS B
+    JOIN (
+        SELECT BOOK_ID, SUM(SALES) AS TOTAL
+        FROM BOOK_SALES
+        WHERE LEFT(SALES_DATE,7) = '2022-01'
+        GROUP BY BOOK_ID
+        ) AS S
+    ON B.BOOK_ID = S.BOOK_ID
+) AS C
+ON A.AUTHOR_ID = C.AUTHOR_ID
+GROUP BY AUTHOR_ID, CATEGORY
+ORDER BY AUTHOR_ID, CATEGORY DESC
+
+# BOOK_ID	CATEGORY	AUTHOR_ID	PRICE
+# 1	    경제	        1	        9000     315000
+# 2	    경제	        1	        12000    792000
+# 3	    인문	        1	        11000    561000
+# 4	    소설	        2	        7500     450000
+# 5	    기술	        3	        11000   1155000
+# 6	    기술	        3	        8000     368000
+# 7	    생활	        3	        9500     817000
+
