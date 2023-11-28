@@ -6,6 +6,7 @@ def check(x, y):
     for a, b in wall:
         if x <= a < x + h and y <= b < y + w:
             flag = False
+            break
     return flag
 
 
