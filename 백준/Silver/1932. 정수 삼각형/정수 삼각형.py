@@ -1,21 +1,22 @@
-from copy import deepcopy
+import sys
+
+input = sys.stdin.readline
 
 n = int(input())
 
-arr = []
+d = []
 
-for _ in range(n):
-    num = list(map(int,input().split()))
-    arr.append(num)
+for i in range(n):
+    arr = list(map(int, input().split()))
+    d.append(arr)
 
-d = deepcopy(arr)
-
-for i in range(1,n):
+for i in range(1, n):
     for j in range(i+1):
         if j == 0:
             d[i][j] += d[i-1][j]
         elif j == i:
             d[i][j] += d[i-1][j-1]
         else:
-            d[i][j] += max(d[i-1][j-1],d[i-1][j])
+            d[i][j] += max(d[i-1][j-1], d[i-1][j])
+
 print(max(d[-1]))
