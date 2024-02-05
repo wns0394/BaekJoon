@@ -1,10 +1,15 @@
-n = int(input())
+import sys
 
+input = sys.stdin.readline
 
-for _ in range(n):
-    a = int(input())
-    d = [1,1,1,2,2] + [0] * a
-    for i in range(5,a+1):
-        d[i] = d[i-1] + d[i-5]
+t = int(input())
 
-    print(d[a-1])
+for _ in range(t):
+    n = int(input())
+
+    d = [1,1,1,2,2]
+
+    for i in range(5,n):
+        d.append(d[i-1] + d[i-5])
+
+    print(d[n-1])
