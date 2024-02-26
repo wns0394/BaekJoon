@@ -17,9 +17,9 @@ for i in range(1, n + 1):
     arr[i][i] = 0
 
 for i in range(1, n + 1):
-    for j in range(1, n + 1):
-        for k in range(1, n + 1):
-            arr[i][j] = min(arr[i][j], arr[i][k] + arr[k][j])
+    for a in range(1, n + 1):
+        for b in range(1, n + 1):
+            arr[a][b] = min(arr[a][b], arr[a][i] + arr[i][b])
 
 result = inf
 x = 0
