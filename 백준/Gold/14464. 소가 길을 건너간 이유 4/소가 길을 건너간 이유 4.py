@@ -21,13 +21,13 @@ cow.sort(key=lambda x: (x[1], x[0]))
 
 result = 0
 
-vi = [0] * n
+visited = [0] * c
 
-for i in range(c):
-    for j in range(n):
-        if cow[j][0] <= chicken[i] <= cow[j][1] and not vi[j]:
+for a, b in cow:
+    for i in range(c):
+        if a <= chicken[i] <= b and not visited[i]:
             result += 1
-            vi[j] = 1
+            visited[i] = 1
             break
 
 print(result)
