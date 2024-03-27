@@ -1,35 +1,40 @@
 import sys
-from pprint import pprint
+
 input = sys.stdin.readline
 
-inf = int(1e9)
+from collections import deque
+
+def bfs(x):
+    q = deque()
+    q.append(x)
+    visited[x] = 1
+
+    while q:
+        x = q.popleft()
+
+        for i in range(1, n + 1):
+            if visited[i] == 0 and arr[x][i] == 1:
+                q.append(i)
+                visited[i] = visited[x] + 1
+    return visited
+
 
 n, m = map(int, input().split())
 
-arr = [[inf] * (n+1) for _ in range(n+1)]
-
-for i in range(1,n+1):
-    arr[i][i] = 0
+arr = [[0] * (n + 1) for _ in range(n + 1)]
 
 for _ in range(m):
     a, b = map(int, input().split())
     arr[a][b] = 1
     arr[b][a] = 1
 
-for a in range(1,n+1):
-    for i in range(1,n+1):
-        for j in range(1,n+1):
-            arr[i][j] = min(arr[i][j], arr[i][a] + arr[a][j])
-
-
-result = inf
-x = 0
-for i in range(1,n+1):
-    count = 0
-    for j in range(1,n+1):
-        count += arr[i][j]
-
+result = int(1e9)
+index = 0
+for i in range(1, n + 1):
+    visited = [0] * (n + 1)
+    count = sum(bfs(i)) - 5
     if result > count:
         result = count
-        x = i
-print(x)
+        index = i
+
+print(index)
