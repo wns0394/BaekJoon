@@ -94,9 +94,9 @@ for _ in range(t):
                     if arr[nx][ny] not in key:
                         key.add(arr[nx][ny])
                         visited = [[0] * m for _ in range(n)]
-                        for j in range(len(dict[ord(arr[nx][ny])])):
-                            q.append(dict[ord(arr[nx][ny])][j])
-
+                        # for j in range(len(dict[ord(arr[nx][ny])])):
+                        #     q.append(dict[ord(arr[nx][ny])][j])
+                        q.extend(dict[ord(arr[nx][ny])])
                         dict[ord(arr[nx][ny])] = []
                     visited[nx][ny] = 1
                     q.append((nx, ny))
