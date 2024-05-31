@@ -59,19 +59,19 @@ for _ in range(t):
                 document.add((n - 1, i))
 
     q = deque(start)
-    # print(q)
+
     dict = {}
     for i in range(97, 123):
-        dict[i] = []
-    # print(dict)
+        # dict[i] = []
+        dict[chr(i)] = []
 
     while q:
         x, y = q.popleft()
 
         if arr[x][y].isupper():
             if arr[x][y].lower() not in key:
-                dict[ord(arr[x][y].lower())].append((x, y))
-                # print(dict[ord(arr[x][y].lower())],123)
+                # dict[ord(arr[x][y].lower())].append((x, y))
+                dict[arr[x][y].lower()].append((x, y))
                 continue
 
         for i in range(4):
@@ -94,10 +94,10 @@ for _ in range(t):
                     if arr[nx][ny] not in key:
                         key.add(arr[nx][ny])
                         visited = [[0] * m for _ in range(n)]
-                        # for j in range(len(dict[ord(arr[nx][ny])])):
-                        #     q.append(dict[ord(arr[nx][ny])][j])
-                        q.extend(dict[ord(arr[nx][ny])])
-                        dict[ord(arr[nx][ny])] = []
+                        q.extend(dict[arr[nx][ny]])
+                        # q.extend(dict[ord(arr[nx][ny])])
+                        # dict[ord(arr[nx][ny])] = []
+                        dict[arr[nx][ny]] = []
                     visited[nx][ny] = 1
                     q.append((nx, ny))
 
