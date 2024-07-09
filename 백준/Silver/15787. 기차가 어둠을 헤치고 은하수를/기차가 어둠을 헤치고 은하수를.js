@@ -29,6 +29,6 @@ for (let i=0; i<m; i++) {
 const check = new Set();
 
 for (let i=0; i<n; i++) {
-  check.add(arr[i].join(','))
+  check.add(arr[i].join(''))
 }
 console.log(check.size)
