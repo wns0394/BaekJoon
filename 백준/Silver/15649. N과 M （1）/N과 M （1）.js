@@ -8,13 +8,15 @@ const input =
 
 const [n,m] = input[0].split(' ').map((e)=> parseInt(e))
 
-
+let answer = ''
 let result = []
 let visited = Array(n+1).fill(0)
 const dfs = (x) => {
 
     if (x == m) {
-        console.log(result.join(" "))
+        answer += result.join(" ")
+        answer += '\n'
+        // console.log(result.join(" "))
         return
     }
 
@@ -31,3 +33,5 @@ const dfs = (x) => {
 }
 
 dfs(0)
+
+console.log(answer)
