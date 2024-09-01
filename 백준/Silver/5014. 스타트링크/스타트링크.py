@@ -1,23 +1,31 @@
+import sys
+
+input = sys.stdin.readline
 
 from collections import deque
 
-def bfs(x):
-    q = deque()
-    q.append(x)
-    visited[x] = 1
+arr = list(map(int, input().split()))
 
-    while q:
-        x = q.popleft()
+# f,s,g,u,d
+# f층 존재 s층 시작 g층 도착 위로 u층 아래로 d층
 
-        if x == g:
-            return visited[x] - 1
-        for next in (x+u, x-d):
-            if 0 < next < (f+1) and visited[next] == 0:
-                q.append(next)
-                visited[next] = visited[x] + 1
-    return "use the stairs"
+q = deque()
+q.append(arr[1])
+visited = [0] * (arr[0] + 1)
 
-f, s, g, u, d = map(int,input().split())
-visited = [0] * (f+1)
+visited[arr[1]] = 1
+flag = False
+while q:
+    x = q.popleft()
 
-print(bfs(s))
+    if x == arr[2]:
+        print(visited[x] - 1)
+        flag = True
+        break
+    for nx in (x+arr[3],x-arr[4]):
+        if 1 <= nx < arr[0] + 1 and visited[nx] == 0:
+            q.append(nx)
+            visited[nx] = visited[x] + 1
+
+if not flag:
+    print('use the stairs')
