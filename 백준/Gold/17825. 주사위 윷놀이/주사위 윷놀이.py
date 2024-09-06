@@ -21,8 +21,6 @@ def check(count, s):
         # print(now_move_distance)
         # 다음번 i번의 말이 위치하는 위치 인덱스
         next = yut[now][now_move_distance - 1]
-        if next == 21:
-            print(next)
 
         # 도착위치가 도착 넘어
         if next != -1 and next in dice:
