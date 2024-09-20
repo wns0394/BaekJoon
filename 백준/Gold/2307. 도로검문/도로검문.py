@@ -67,7 +67,6 @@ find(n)
 result = 0
 for i in range(len(shortes) - 1):
     distance = [inf] * (n + 1)
-    arr[shortes[i]]
 
     dijkstra(1, shortes[i], shortes[i + 1])
 
